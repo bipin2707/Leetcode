@@ -1,6 +1,8 @@
 public class Solution {
     public int TotalFruit(int[] fruits) {
 
+        if (fruits.Length <= 2) return fruits.Length;
+  
         int l=0;
         int max=0;
 

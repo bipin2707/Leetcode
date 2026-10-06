@@ -13,11 +13,11 @@ public class Solution {
     {
         while(l<r)
         {
-            // int temp=nums[l];
-            // nums[l]=nums[r];
-            // nums[r]=temp;
+            int temp=nums[l];
+            nums[l]=nums[r];
+            nums[r]=temp;
 
-            (nums[l],nums[r])=(nums[r],nums[l]);
+            // (nums[l],nums[r])=(nums[r],nums[l]);
 
            l++;
            r--;

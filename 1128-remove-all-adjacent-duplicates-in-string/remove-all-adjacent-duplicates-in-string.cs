@@ -1,27 +1,75 @@
 public class Solution {
     public string RemoveDuplicates(string s) {
-        
-        int n=s.Length;
 
-        Stack<char> s1 =new Stack<char>();
+        StringBuilder sb=new StringBuilder ();
 
-        for(int i=0;i<n;i++)
+        foreach(char ch in s)
         {
-            char c=s[i];
+            int len=sb.Length;
 
-            if (s1.Count>0 && c==s1.Peek())
+            if( len>0 && ch==sb[len-1])
             {
-                s1.Pop();
+                sb.Remove(len-1,1);
             }
             else
             {
-                s1.Push(c);
+                sb.Append(ch);
             }
-
         }
+        return sb.ToString();
 
-        string result = new string(s1.Reverse().ToArray());
-        return result;
     }
-    
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// public class Solution {
+//     public string RemoveDuplicates(string s) {
+        
+//         int n=s.Length;
+
+//         Stack<char> s1 =new Stack<char>();
+
+//         for(int i=0;i<n;i++)
+//         {
+//             char c=s[i];
+
+//             if (s1.Count>0 && c==s1.Peek())
+//             {
+//                 s1.Pop();
+//             }
+//             else
+//             {
+//                 s1.Push(c);
+//             }
+
+//         }
+
+//         string result = new string(s1.Reverse().ToArray());
+//         return result;
+//     }
+    
+// }

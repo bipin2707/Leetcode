@@ -8,30 +8,25 @@ public class Solution {
             { ']', '[' }
         };
 
-        StringBuilder sb=new StringBuilder();
+        Stack<char>stack=new Stack <char> ();
 
         foreach (char ch in s)
         {
-            int len = sb.Length;
-            if(len>0 && map.ContainsKey(ch) )
+            
+            if(stack.Count>0 && map.ContainsKey(ch) )
             {
-                if(sb[len-1]!=map[ch])
+                if(stack.Pop()!=map[ch])
                 {
                     return false;
-                }
-                else
-                {
-                    sb.Remove(len-1,1);
-
                 }
                 
             }
             else
             {
-                sb.Append(ch);
+                stack.Push(ch);
             }
         }
-        return sb.Length<=0;
+        return stack.Count==0;
 
 
     }

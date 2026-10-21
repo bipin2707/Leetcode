@@ -8,7 +8,7 @@ public class Solution {
 
         foreach (char ch in s)
         {
-            int len=sb.Length;
+            
             if (ch=='(')
             {
                 open++;
@@ -30,21 +30,35 @@ public class Solution {
             }
         }
 
-        StringBuilder result = new StringBuilder ();
-
+        StringBuilder res = new StringBuilder ();
+        int close=0;
         for (int i=sb.Length-1;i>=0;i--)
         {
-            if (sb[i]=='(' && open>0)
+            char ch =sb[i];
+            if (ch==')')
             {
-                open--;
-                continue;
+                close++;
+                res.Append(ch);
             }
-            result.Append(sb[i]);
+            else if (ch=='(')
+            {
+                
+                if(close>0 )
+                {
+                    res.Append(ch);
+                    
+                    close--;
+                }
+            }
+            else
+            {
+                res.Append(ch);
+            }
         }
 
         
 
-        return new string(result.ToString().Reverse().ToArray());
+        return new string(res.ToString().Reverse().ToArray());
 
 
 

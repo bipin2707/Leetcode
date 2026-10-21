@@ -1,54 +1,114 @@
 public class Solution {
     public string MinRemoveToMakeValid(string s) {
 
-        int open=0;
+        Stack<int> stack=new Stack <int> ();
+        char [] arr = s.ToArray();
 
-
-        StringBuilder sb=new StringBuilder();
-
-        foreach (char ch in s)
+        for (int i=0;i<s.Length;i++)
         {
-            int len=sb.Length;
-            if (ch=='(')
+            if (s[i]=='(')
             {
-                open++;
-                sb.Append(ch);
+                stack.Push(i);
             }
-            else if (ch==')')
+            else if (s[i]==')')
             {
-                
-                if(open>0 )
+                if (stack.Count>0)
                 {
-                    sb.Append(ch);
-                    
-                    open--;
+                    stack.Pop();
+                }
+                else
+                {
+                    arr[i]='#';
                 }
             }
-            else
-            {
-                sb.Append(ch);
-            }
         }
 
-        StringBuilder result = new StringBuilder ();
-
-        for (int i=sb.Length-1;i>=0;i--)
+        while(stack.Count>0)
         {
-            if (sb[i]=='(' && open>0)
-            {
-                open--;
-                continue;
-            }
-            result.Append(sb[i]);
+            arr[stack.Pop()]='#';
         }
 
-        
+        StringBuilder sb =new StringBuilder();
 
-        return new string(result.ToString().Reverse().ToArray());
+        for (int i=0;i<arr.Length;i++)
+        {
+            if (arr[i]!='#')
+            {
+                sb.Append(arr[i]);
+            }
+        }
 
-
-
-        
+        return sb.ToString();
         
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// public class Solution {
+//     public string MinRemoveToMakeValid(string s) {
+
+//         int open=0;
+
+
+//         StringBuilder sb=new StringBuilder();
+
+//         foreach (char ch in s)
+//         {
+//             int len=sb.Length;
+//             if (ch=='(')
+//             {
+//                 open++;
+//                 sb.Append(ch);
+//             }
+//             else if (ch==')')
+//             {
+                
+//                 if(open>0 )
+//                 {
+//                     sb.Append(ch);
+                    
+//                     open--;
+//                 }
+//             }
+//             else
+//             {
+//                 sb.Append(ch);
+//             }
+//         }
+
+//         StringBuilder result = new StringBuilder ();
+
+//         for (int i=sb.Length-1;i>=0;i--)
+//         {
+//             if (sb[i]=='(' && open>0)
+//             {
+//                 open--;
+//                 continue;
+//             }
+//             result.Append(sb[i]);
+//         }
+
+        
+
+//         return new string(result.ToString().Reverse().ToArray());
+
+        
+//     }
+// }

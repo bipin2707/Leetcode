@@ -2,7 +2,7 @@ public class Solution {
     public string MinRemoveToMakeValid(string s) {
 
         int open=0;
-        int close=0;
+
 
         StringBuilder sb=new StringBuilder();
 
@@ -42,9 +42,9 @@ public class Solution {
             result.Append(sb[i]);
         }
 
-        string ans = result.ToString();
+        
 
-        return new string(ans.Reverse().ToArray());
+        return new string(result.ToString().Reverse().ToArray());
 
 
 

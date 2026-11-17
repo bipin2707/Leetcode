@@ -1,0 +1,36 @@
+/**
+ * Definition for singly-linked list.
+ * public class ListNode {
+ *     public int val;
+ *     public ListNode next;
+ *     public ListNode(int val=0, ListNode next=null) {
+ *         this.val = val;
+ *         this.next = next;
+ *     }
+ * }
+ */
+public class Solution {
+    public ListNode ReverseList(ListNode head) {
+
+        ListNode curr=head;
+        List <int> list= new List <int> ();
+
+        while(curr!=null)
+        {
+            list.Add(curr.val);
+            curr=curr.next;
+        }
+
+        ListNode dummy = new ListNode();
+        curr=dummy;
+
+        for (int i = list.Count-1;i>=0;i--)
+        {
+            curr.next=new ListNode(list[i]);
+            curr=curr.next;
+        }
+
+        return dummy.next;
+        
+    }
+}

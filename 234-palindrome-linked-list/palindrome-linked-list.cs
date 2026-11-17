@@ -12,28 +12,81 @@
 public class Solution {
     public bool IsPalindrome(ListNode head) {
 
-        List<int> list=new List<int>();
-        ListNode curr= head;
-
-        while(curr!=null)
+        if(head==null || head.next==null)
         {
-            list.Add(curr.val);
-            curr=curr.next;
+            return true;
         }
 
-        int l=0;
-        int r=list.Count-1;
+        ListNode curr =head;
+        ListNode slow=head;
+        ListNode fast= head;
+        
 
-        while(l<r)
+        while(fast!=null && fast.next != null) 
         {
-            if(list[l]!=list[r])
+            slow=slow.next;
+            fast=fast.next.next;
+
+        }
+
+        ListNode prev=null;
+        ListNode cur=slow;
+        while(cur!=null)
+        {
+            ListNode next=cur.next;
+
+            cur.next=prev;
+
+            prev=cur;
+            cur=next;
+        }
+
+        while(prev!=null)
+        {
+            if(prev.val!=curr.val)
             {
                 return false;
             }
-
-            l++;
-            r--;
+            curr=curr.next;
+            prev=prev.next;
         }
         return true;
     }
 }
+
+
+
+
+
+
+
+
+
+// public class Solution {
+//     public bool IsPalindrome(ListNode head) {
+
+//         List<int> list=new List<int>();
+//         ListNode curr= head;
+
+//         while(curr!=null)
+//         {
+//             list.Add(curr.val);
+//             curr=curr.next;
+//         }
+
+//         int l=0;
+//         int r=list.Count-1;
+
+//         while(l<r)
+//         {
+//             if(list[l]!=list[r])
+//             {
+//                 return false;
+//             }
+
+//             l++;
+//             r--;
+//         }
+//         return true;
+//     }
+// }
